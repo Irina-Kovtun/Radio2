@@ -15,12 +15,18 @@ class RadioTest {
     }
 
     @Test
-    void shouldSetStationOutOfRange() {
+    void shouldSetStationOverRange() {
         Radio radio = new Radio();
-        radio.setCurrentStation(867);
-        assertEquals(8, radio.getCurrentStation());
+        radio.setCurrentStation(99);
+        assertEquals(0, radio.getCurrentStation());
     }
 
+    @Test
+    void shouldSetStationBelowRange() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-1);
+        assertEquals(0, radio.getCurrentStation());
+    }
     @Test
     void shouldGoNextStationBeforeMaximum() {
         Radio radio = new Radio();
@@ -34,7 +40,7 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
         radio.nextStation();
-        assertEquals(0,radio.getCurrentStation());
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
@@ -80,8 +86,9 @@ class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(10);
         radio.increaseVolume();
-        assertEquals(10,radio.getCurrentVolume());
+        assertEquals(10, radio.getCurrentVolume());
     }
+
     @Test
     void shouldDecreaseVolumeWithingRange() {
         Radio radio = new Radio();
@@ -94,7 +101,7 @@ class RadioTest {
     void shouldDecreaseVolumeOutofRange() {
         Radio radio = new Radio();
         radio.decreaseVolume();
-        assertEquals(0,radio.getCurrentVolume());
+        assertEquals(0, radio.getCurrentVolume());
     }
 }
 

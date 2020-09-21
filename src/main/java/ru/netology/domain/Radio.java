@@ -15,8 +15,12 @@ public class Radio {
 
     public void setCurrentStation(int currentStation) {
         if (currentStation > maxStation) {
-            int firstDigit = Integer.parseInt(Integer.toString(currentStation).substring(0, 1));
-            currentStation = firstDigit;
+            return;
+        }
+        if (currentStation < minStation) {
+            return;
+//            int firstDigit = Integer.parseInt(Integer.toString(currentStation).substring(0, 1));
+//            currentStation = firstDigit;
         }
         this.currentStation = currentStation;
     }
@@ -36,6 +40,7 @@ public class Radio {
             currentStation--;
         }
     }
+
     public int getCurrentVolume() {
         return currentVolume;
     }
@@ -46,18 +51,19 @@ public class Radio {
         }
         this.currentVolume = currentVolume;
     }
+
     public void increaseVolume() {
         if (currentVolume == maxVolume) {
             return;
         }
-            currentVolume++;
-        }
+        currentVolume++;
+    }
 
     public void decreaseVolume() {
         if (currentVolume == minVolume) {
             return;
         }
-            currentVolume--;
+        currentVolume--;
     }
 
 }
