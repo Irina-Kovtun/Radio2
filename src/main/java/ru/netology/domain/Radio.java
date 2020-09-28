@@ -6,8 +6,16 @@ public class Radio {
     private int maxStation = 9;
     private int minStation = 0;
     private int currentVolume;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
+
+    public Radio(int maxStation) {
+        this.maxStation = maxStation;
+    }
+
+    public Radio(){
+
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -19,8 +27,6 @@ public class Radio {
         }
         if (currentStation < minStation) {
             return;
-//            int firstDigit = Integer.parseInt(Integer.toString(currentStation).substring(0, 1));
-//            currentStation = firstDigit;
         }
         this.currentStation = currentStation;
     }
